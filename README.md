@@ -1,3 +1,3 @@
 # simple_games
 
-This is a simple text-based adventure game that you can play in your terminal.
+These are two simple games that you can play in your terminal.
