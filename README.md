@@ -2,7 +2,7 @@
 
 These are three simple Python games that you can play in your terminal.
 
-The adventure game is pretty straightfforwar. Just follow the prompts make your choices.
+The adventure game is pretty straightforward. Just follow the prompts make your choices. I may go back and add a combat system with HP and whatpt, but will see.
 
 For rock, paper, scissors, first play the game the uploded file. Then, you can change the what class plays what in line 123.
   The compter players have learn functions that are kinda cool. It's really basic machine learning, but it's a start 
