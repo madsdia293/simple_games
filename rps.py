@@ -63,6 +63,38 @@ class HumanPlayer(Player):
                 return move
                 break
 
+class AIPlayer(Player):
+    # Initialize the transition matrix for the Markov Chain
+    transitions = {
+        'Rock': {'Rock': 0, 'Paper': 0, 'Scissors': 0},
+        'Paper': {'Rock': 0, 'Paper': 0, 'Scissors': 0},
+        'Scissors': {'Rock': 0, 'Paper': 0, 'Scissors': 0}
+    }
+    previous_move = None
+    def predict_and_generate_next_move(self):
+        if self.previous_move is None:
+            return random.choice(moves)
+
+        next_move_prob = self.transitions[self.previous_move]
+        max_prob_move = max(next_move_prob, key=next_move_prob.get)
+
+        # Choose the move that beats the predicted move
+        if max_prob_move == 'Rock':
+            return 'Paper'
+        elif max_prob_move == 'Paper':
+            return 'Scissors'
+        else:
+            return 'Rock'
+
+    def update_transitions(self, prev, current):
+        self.transitions[prev][current] += 1
+    def move(self):
+        return self.predict_and_generate_next_move()
+    def learn(self, my_move, their_move):
+        if self.previous_move:
+            self.update_transitions(self.previous_move, their_move)
+        self.previous_move = their_move
+
 
 def beats(one, two):
     return ((one == 'Rock' and two == 'Scissors') or
@@ -120,5 +152,5 @@ class Game:
 
 
 if __name__ == '__main__':
-    game = Game(HumanPlayer(), RandomPlayer())
+    game = Game(HumanPlayer(), AIPlayer())
     game.play_game()
