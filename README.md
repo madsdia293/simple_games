@@ -142,5 +142,5 @@ The race track consists of a start line on the left and a finish line on the rig
 Note: You may need to adjust the indentation of the code when copying it to ensure proper execution.
 
 ## License
-This project is licensed under the [MIT License](LICENSE).
+This projects are licensed under the [MIT License](LICENSE).
 
